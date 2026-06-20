@@ -1,0 +1,4 @@
+# Wokwi Library List — MineGuard Simulated Prototype
+# The Modest-IoT framework is included flat in this project (self-contained).
+TinyGPSPlus
+LiquidCrystal_I2C
