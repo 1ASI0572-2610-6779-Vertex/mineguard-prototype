@@ -1,9 +1,6 @@
 # MineGuard — Simulated Prototype (Wokwi)
 
-Loop-driven Modest-IoT safety node for ESP32. Sensors that Wokwi does not provide
-natively are simulated with **custom chips**, exactly like the BykerZ prototype.
-The firmware sensor **classes stay** (they are the drivers); the chips give them
-real simulated hardware to read.
+wokwi: https://wokwi.com/projects/467328858128287745
 
 ## Custom chips (the two you asked for)
 | Chip | Files | Simulates | Read by class |
