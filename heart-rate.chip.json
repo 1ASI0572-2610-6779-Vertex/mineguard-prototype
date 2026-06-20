@@ -1,0 +1,20 @@
+{
+  "name": "heart-rate",
+  "author": "MineGuard Project",
+  "pins": [
+    "VCC",
+    "GND",
+    "SIG"
+  ],
+  "controls": [
+    {
+      "id": "bpm",
+      "label": "Heart Rate (BPM)",
+      "type": "range",
+      "min": 40,
+      "max": 180,
+      "step": 1,
+      "initial": 75
+    }
+  ]
+}
