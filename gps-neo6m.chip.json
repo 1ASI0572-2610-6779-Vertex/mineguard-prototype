@@ -1,0 +1,15 @@
+{
+  "name": "gps-neo6m",
+  "author": "Neo Rise (adapted)",
+  "pins": [
+    "VCC",
+    "RX",
+    "TX",
+    "GND",
+    "",
+    "",
+    "",
+    ""
+  ],
+  "controls": []
+}
