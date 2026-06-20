@@ -1,8 +1,11 @@
 # MineGuard — Simulated Prototype (Wokwi)
 
-link: https://wokwi.com/projects/467328858128287745 
+Loop-driven Modest-IoT safety node for ESP32. Sensors that Wokwi does not provide
+natively are simulated with **custom chips**, exactly like the BykerZ prototype.
+The firmware sensor **classes stay** (they are the drivers); the chips give them
+real simulated hardware to read.
 
-## Custom chips
+## Custom chips (the two you asked for)
 | Chip | Files | Simulates | Read by class |
 |------|-------|-----------|----------------|
 | `chip-heart-rate` | `heart-rate.chip.c/.json` | Heart-rate sensor. A **BPM slider** outputs a DC voltage (40 BPM → 0 V, 180 BPM → 3.3 V) on pin **SIG**. | `PulseSensor` (analogRead on GPIO 32, maps back to BPM) |
