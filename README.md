@@ -1,6 +1,8 @@
 # MineGuard — Simulated Prototype (Wokwi)
 
-## Custom chips (the two you asked for)
+link: https://wokwi.com/projects/467328858128287745 
+
+## Custom chips
 | Chip | Files | Simulates | Read by class |
 |------|-------|-----------|----------------|
 | `chip-heart-rate` | `heart-rate.chip.c/.json` | Heart-rate sensor. A **BPM slider** outputs a DC voltage (40 BPM → 0 V, 180 BPM → 3.3 V) on pin **SIG**. | `PulseSensor` (analogRead on GPIO 32, maps back to BPM) |
