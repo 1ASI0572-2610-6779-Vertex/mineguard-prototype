@@ -1,48 +1,25 @@
 /**
  * @file sketch.ino
- * @brief MineGuard — Event-driven prototype (no Arduino loop).
- *
- * Architecture:
- *   - loop() is EMPTY. No busy polling in the main thread.
- *   - Collision (KY-031) and SOS button are HARDWARE INTERRUPTS: the hardware
- *     notifies instantly, nothing is polled for them.
- *   - The four HC-SR04, the heart-rate chip and the GPS stream are sampled by a
- *     timer (Ticker) — a sensor that must be *asked* (ranging/analog/serial)
- *     cannot announce itself, so a 200 ms tick drives them. Each emits an event
- *     only when its value changes.
- *   - The LCD, LEDs and buzzer are refreshed ONLY when the state changes.
- *     Drag a distance slider and the display updates; idle = nothing redraws.
- *
- * Wokwi libraries: TinyGPSPlus, LiquidCrystal_I2C.
+ * @brief MineGuard Wokwi prototype using Modest IoT Nano Framework.
  */
 
-#include "MineGuardDevice.h"
 #include <Arduino.h>
+#include <ModestIoT.h>
 #include <Wire.h>
-#include <Ticker.h>
+#include "MineGuardDevice.h"
 
-MineGuardDevice device;
-Ticker samplingEngine;
-
-// Timer-driven sampling tick (replaces the Arduino loop)
-void onSamplingTick() {
-    device.update();
-}
+MineGuardDevice* device = nullptr;
 
 void setup() {
     Serial.begin(115200);
     Wire.begin(21, 22); // I2C: SDA=21, SCL=22
 
-    Serial.println("MineGuard event-driven prototype starting...");
-    device.initialize();
-
-    // Drive sampling from a timer; buttons/collision already fire via interrupts.
-    samplingEngine.attach_ms(200, onSamplingTick);
-
-    Serial.println("MineGuard ready. loop() is empty — everything is event/timer driven.");
+    Serial.println("MineGuard prototype starting...");
+    device = new MineGuardDevice();
+    device->initialize();
 }
 
 void loop() {
-    // Intentionally empty: collision/SOS are interrupt-driven, and sensor
-    // sampling runs on the Ticker. Nothing to poll here.
+    // Runtime work is handled by the Modest IoT framework tasks and scheduler.
+    vTaskDelay(pdMS_TO_TICKS(60000));
 }

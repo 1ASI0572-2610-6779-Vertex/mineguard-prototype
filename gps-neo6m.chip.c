@@ -1,6 +1,5 @@
 // Wokwi Custom Chip — NEO-6M style GPS emitting NMEA over UART (9600 baud).
-// Adapted to broadcast coordinates around Lima, Peru so TinyGPS++ in the
-// firmware decodes a valid fix. Emits GPGGA + GPRMC sentences at 1 Hz.
+// Broadcasts coordinates around Lima, Peru. Emits GPGGA + GPRMC sentences at 1 Hz.
 //
 // For docs: https://docs.wokwi.com/chips-api/getting-started
 // SPDX-License-Identifier: MIT
