@@ -1,53 +1,23 @@
 {
   "version": 1,
-  "author": "MineGuard Project",
+  "author": "MineGuard",
   "editor": "wokwi",
   "parts": [
     { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 0, "attrs": {} },
-    { "type": "wokwi-hc-sr04", "id": "usFront", "top": -210, "left": 250, "attrs": {} },
-    { "type": "wokwi-hc-sr04", "id": "usBack",  "top": -110, "left": 250, "attrs": {} },
-    { "type": "wokwi-hc-sr04", "id": "usLeft",  "top": -10,  "left": 250, "attrs": {} },
-    { "type": "wokwi-hc-sr04", "id": "usRight", "top": 90,   "left": 250, "attrs": {} },
-    {
-      "type": "wokwi-lcd1602",
-      "id": "lcd",
-      "top": -320,
-      "left": 200,
-      "attrs": { "pins": "i2c" }
-    },
-    { "type": "chip-heart-rate", "id": "hr", "top": 260, "left": -280, "attrs": {} },
-    { "type": "chip-gps-neo6m", "id": "gps", "top": 240, "left": 250, "attrs": {} },
-    {
-      "type": "wokwi-led",
-      "id": "ledRed",
-      "top": -60,
-      "left": -210,
-      "attrs": { "color": "red" }
-    },
-    {
-      "type": "wokwi-led",
-      "id": "ledGreen",
-      "top": -60,
-      "left": -150,
-      "attrs": { "color": "green" }
-    },
-    { "type": "wokwi-resistor", "id": "rRed", "top": -30, "left": -260, "attrs": { "value": "220" } },
-    { "type": "wokwi-resistor", "id": "rGreen", "top": -30, "left": -110, "attrs": { "value": "220" } },
-    { "type": "wokwi-buzzer", "id": "buzzer", "top": 60, "left": -280, "attrs": {} },
-    {
-      "type": "wokwi-pushbutton",
-      "id": "btnChoque",
-      "top": 130,
-      "left": -160,
-      "attrs": { "color": "red", "label": "Choque" }
-    },
-    {
-      "type": "wokwi-pushbutton",
-      "id": "btnSos",
-      "top": 210,
-      "left": -160,
-      "attrs": { "color": "blue", "label": "SOS" }
-    }
+    { "type": "wokwi-hc-sr04", "id": "usFront", "top": -190, "left": 270, "attrs": { "label": "Front" } },
+    { "type": "wokwi-hc-sr04", "id": "usBack", "top": 140, "left": 290, "attrs": { "label": "Back" } },
+    { "type": "wokwi-hc-sr04", "id": "usLeft", "top": -195, "left": -310, "attrs": { "label": "Left" } },
+    { "type": "wokwi-hc-sr04", "id": "usRight", "top": 135, "left": -315, "attrs": { "label": "Right" } },
+    { "type": "wokwi-lcd1602", "id": "lcd", "top": -300, "left": 160, "attrs": { "pins": "i2c" } },
+    { "type": "chip-heart-rate", "id": "pulse", "top": 265, "left": -285, "attrs": {} },
+    { "type": "chip-gps-neo6m", "id": "gps", "top": 245, "left": 230, "attrs": {} },
+    { "type": "wokwi-led", "id": "ledRed", "top": -65, "left": -215, "attrs": { "color": "red" } },
+    { "type": "wokwi-led", "id": "ledGreen", "top": -65, "left": -155, "attrs": { "color": "green" } },
+    { "type": "wokwi-resistor", "id": "rRed", "top": -35, "left": -265, "attrs": { "value": "220" } },
+    { "type": "wokwi-resistor", "id": "rGreen", "top": -35, "left": -115, "attrs": { "value": "220" } },
+    { "type": "wokwi-buzzer", "id": "buzzer", "top": 55, "left": -280, "attrs": {} },
+    { "type": "wokwi-pushbutton", "id": "collision", "top": 130, "left": -160, "attrs": { "color": "red", "label": "Choque" } },
+    { "type": "wokwi-pushbutton", "id": "sos", "top": 210, "left": -160, "attrs": { "color": "blue", "label": "SOS" } }
   ],
   "connections": [
     [ "esp:TX", "$serialMonitor:RX", "", [] ],
@@ -69,35 +39,35 @@
     [ "esp:34", "usBack:ECHO", "orange", [ "v0" ] ],
 
     [ "esp:5V", "usLeft:VCC", "red", [ "v0" ] ],
-    [ "esp:GND.1", "usLeft:GND", "black", [ "v0" ] ],
+    [ "esp:GND.2", "usLeft:GND", "black", [ "v0" ] ],
     [ "esp:25", "usLeft:TRIG", "purple", [ "v0" ] ],
     [ "esp:35", "usLeft:ECHO", "orange", [ "v0" ] ],
 
     [ "esp:5V", "usRight:VCC", "red", [ "v0" ] ],
-    [ "esp:GND.1", "usRight:GND", "black", [ "v0" ] ],
+    [ "esp:GND.2", "usRight:GND", "black", [ "v0" ] ],
     [ "esp:26", "usRight:TRIG", "purple", [ "v0" ] ],
     [ "esp:27", "usRight:ECHO", "orange", [ "v0" ] ],
 
-    [ "esp:2", "rRed:1", "green", [ "v0" ] ],
+    [ "esp:15", "rRed:1", "green", [ "v0" ] ],
     [ "rRed:2", "ledRed:A", "green", [ "v0" ] ],
     [ "ledRed:C", "esp:GND.2", "black", [ "v0" ] ],
 
-    [ "esp:15", "rGreen:1", "green", [ "v0" ] ],
+    [ "esp:2", "rGreen:1", "green", [ "v0" ] ],
     [ "rGreen:2", "ledGreen:A", "green", [ "v0" ] ],
     [ "ledGreen:C", "esp:GND.2", "black", [ "v0" ] ],
 
     [ "esp:23", "buzzer:2", "purple", [ "v0" ] ],
     [ "esp:GND.3", "buzzer:1", "black", [ "v0" ] ],
 
-    [ "esp:4", "btnChoque:1.l", "yellow", [ "v0" ] ],
-    [ "btnChoque:2.l", "esp:GND.3", "black", [ "v0" ] ],
+    [ "esp:4", "collision:1.l", "yellow", [ "v0" ] ],
+    [ "collision:2.l", "esp:GND.3", "black", [ "v0" ] ],
 
-    [ "esp:13", "btnSos:1.l", "cyan", [ "v0" ] ],
-    [ "btnSos:2.l", "esp:GND.3", "black", [ "v0" ] ],
+    [ "esp:13", "sos:1.l", "cyan", [ "v0" ] ],
+    [ "sos:2.l", "esp:GND.3", "black", [ "v0" ] ],
 
-    [ "esp:3V3", "hr:VCC", "red", [ "v0" ] ],
-    [ "esp:GND.2", "hr:GND", "black", [ "v0" ] ],
-    [ "esp:32", "hr:SIG", "gold", [ "v0" ] ],
+    [ "esp:3V3", "pulse:VCC", "red", [ "v0" ] ],
+    [ "esp:GND.2", "pulse:GND", "black", [ "v0" ] ],
+    [ "esp:32", "pulse:SIG", "gold", [ "v0" ] ],
 
     [ "esp:3V3", "gps:VCC", "red", [ "v0" ] ],
     [ "esp:GND.3", "gps:GND", "black", [ "v0" ] ],
