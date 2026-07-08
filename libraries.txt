@@ -1,4 +1,12 @@
-# Wokwi Library List — MineGuard Simulated Prototype
-# The Modest-IoT framework is included flat in this project (self-contained).
-TinyGPSPlus
-LiquidCrystal_I2C
+# Wokwi Library List
+# See https://docs.wokwi.com/guides/libraries
+
+ArduinoJson
+PubSubClient
+ESP32Servo
+LiquidCrystal I2C
+DHT sensor library
+Adafruit Unified Sensor
+EspSoftwareSerial
+HX711 Arduino Library
+ModestIoT@wokwi:fb939e3848beed149e380d7392ca7967aa440c62
