@@ -9,6 +9,7 @@
 #include <Arduino.h>
 #include <ModestIoT.h>
 #include "GPSSensor.h"
+#include "HeartRateSensor.h"
 #include "MineGuardBuzzer.h"
 #include "SafetyPolicy.h"
 
@@ -23,7 +24,7 @@ private:
     UltrasonicSensor backDistanceSensor;
     UltrasonicSensor leftDistanceSensor;
     UltrasonicSensor rightDistanceSensor;
-    PulseSensor pulseSensor;
+    HeartRateSensor pulseSensor;
     Button collisionButton;
     Button sosButton;
     GPSSensor gpsSensor;
